@@ -1,0 +1,23 @@
+{
+  "name": "nicolelouise",
+  "version": "1.0.0",
+  "description": "find person from database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NicoleLouise",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.9.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicoleLouise/CtH2016-assignments.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NicoleLouise/CtH2016-assignments/issues"
+  },
+  "homepage": "https://github.com/NicoleLouise/CtH2016-assignments#readme"
+}

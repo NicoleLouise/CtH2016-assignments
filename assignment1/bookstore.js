@@ -72,6 +72,10 @@ switch(program.title)
 		console.log(book5_price);
 		console.log(book5_kind);
 		break;
+}
+
+switch(program.author)
+{
 
 //Search based on -a "author" ?????
 
@@ -105,7 +109,10 @@ switch(program.title)
 		console.log(book5_price);
 		console.log(book5_kind);
 		break;
+}
 
+switch(program.price)
+{
 //Search based on -p "price"
 
 	case book1_price: 
@@ -138,8 +145,15 @@ switch(program.title)
 		console.log(book5_price);
 		console.log(book5_kind);
 		break;
+}
 
+switch(program.kind)
+{
 //Search based on -k "kind" (Trader paperback vs Paperback)
+//Search for -k "Paperback" > all books that have 'kind' paperback
+//Search for -k "Trader paperback" > all books that are Trader paperback
+//But it assumes that every book has a different 'kind', which is why it
+// shows The Wolf of Wall Street's info when you type --kind "Paperback"
 
 	case book1_kind: 
 		console.log(book1_title);

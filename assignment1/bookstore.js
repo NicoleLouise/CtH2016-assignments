@@ -108,29 +108,29 @@ switch(program.title)
 
 //Search based on -p "price"
 
-	case book5_price: 
-		console.log(book5_title);
-		console.log(book5_author);
-		console.log(book5_price);
-		console.log(book5_kind);
+	case book1_price: 
+		console.log(book1_title);
+		console.log(book1_author);
+		console.log(book1_price);
+		console.log(book1_kind);
 		break;
-	case book5_price: 
-		console.log(book5_title);
-		console.log(book5_author);
-		console.log(book5_price);
-		console.log(book5_kind);
+	case book2_price: 
+		console.log(book2_title);
+		console.log(book2_author);
+		console.log(book2_price);
+		console.log(book2_kind);
 		break;
-	case book5_price: 
-		console.log(book5_title);
-		console.log(book5_author);
-		console.log(book5_price);
-		console.log(book5_kind);
+	case book3_price: 
+		console.log(book3_title);
+		console.log(book3_author);
+		console.log(book3_price);
+		console.log(book3_kind);
 		break;
-	case book5_price: 
-		console.log(book5_title);
-		console.log(book5_author);
-		console.log(book5_price);
-		console.log(book5_kind);
+	case book4_price: 
+		console.log(book4_title);
+		console.log(book4_author);
+		console.log(book4_price);
+		console.log(book4_kind);
 		break;
 	case book5_price: 
 		console.log(book5_title);
@@ -141,29 +141,29 @@ switch(program.title)
 
 //Search based on -k "kind" (Trader paperback vs Paperback)
 
-	case book5_kind: 
-		console.log(book5_title);
-		console.log(book5_author);
-		console.log(book5_price);
-		console.log(book5_kind);
+	case book1_kind: 
+		console.log(book1_title);
+		console.log(book1_author);
+		console.log(book1_price);
+		console.log(book1_kind);
 		break;
-	case book5_kind: 
-		console.log(book5_title);
-		console.log(book5_author);
-		console.log(book5_price);
-		console.log(book5_kind);
+	case book2_kind: 
+		console.log(book2_title);
+		console.log(book2_author);
+		console.log(book2_price);
+		console.log(book2_kind);
 		break;
-	case book5_kind: 
-		console.log(book5_title);
-		console.log(book5_author);
-		console.log(book5_price);
-		console.log(book5_kind);
+	case book3_kind: 
+		console.log(book3_title);
+		console.log(book3_author);
+		console.log(book3_price);
+		console.log(book3_kind);
 		break;
-	case book5_kind: 
-		console.log(book5_title);
-		console.log(book5_author);
-		console.log(book5_price);
-		console.log(book5_kind);
+	case book4_kind: 
+		console.log(book4_title);
+		console.log(book4_author);
+		console.log(book4_price);
+		console.log(book4_kind);
 		break;
 	case book5_kind: 
 		console.log(book5_title);

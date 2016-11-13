@@ -1,4 +1,16 @@
 // Second, better version of bookstore.js in assignment1
+
+//Bookstore2
+
+//attributing variables (unlike bookstore.js)
+//dictionary: things with descriptions
+
+//var book1 = {
+//	'title': "The Wolf of Wall Street",
+//	'author': "Jordan Belfort",
+//	'price': "15.95"
+//};
+
 var book1 = {
 	'title': "Ways of Curating",
 	'price': 16.95,
@@ -18,7 +30,7 @@ var book3 = {
 };
 
 var array_of_books = [
-	{ 'title': "Ways of Curating",
+	{'title': "Ways of Curating",
 	'price': 16.95,
 	'author': "Hans Ulrich Orbist"
 	}, 
@@ -41,10 +53,6 @@ function print_the_book(a_book) {
 	console.log('Author: ' + a_book.author);
 }
 
-
-
-
-
 for(var i = 0; i < array_of_books.length; i++) {
 	print_the_book(array_of_books[i])
 }
@@ -54,3 +62,6 @@ for(var i = 0; i < array_of_books.length; i++) {
 //It's also easier than to write console.log(book1), console.log(book2), etc.
 //We replaced the second console.log with print_the_book, which we made up
 //a_book only exists in the function print_the_book
+
+
+//Will give you Jordan Belfort

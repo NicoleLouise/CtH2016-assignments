@@ -186,8 +186,4 @@ switch(program.kind)
 		console.log(book5_kind);
 		break;
 
-
-	default:
-		console.log('No match :(');
-		break;
 }

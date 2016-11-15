@@ -113,31 +113,32 @@ var text = '';
 
 console.log('\n\n\n'); 						//creates 3 newlines
 
-console.log(salutation());					//creates solutation based on line78
+console.log(salutation());						//creates solutation based on line78
 
 console.log('\n');
 
 //creates a number of sentences, randomly chosen, if at all
-for (var i = 0; i < sentence; i++) { 		//loop the proces
+for (var i = 0; i < sentence; i++) { 			//loop the proces
 
 	var c = choice(['medium', 'long', 'short', 'touch']);		//standard: first a medium sentence, then a long sentence
 
-	if(c == 'medium') {						//if 'medium' was chosen from line87, produce a medium sentence and add to text
+	if(c == 'medium') {							//if 'medium' was chosen from line87, produce a medium sentence and add to text
 		text += ' ' + medium();
-	} else if(c == 'long') {				//if 'long' was chosen from line87, produce a long sentence and add to text
-		text += ' ' + long();
-	} else if (c == 'short') {				//if 'short' was chosen from line87, produce a short sentence and add to text
+	} else if(c == 'long') {					//if 'long' was chosen from line87, produce a long sentence and add to text
+		text += ' ' + long();	
+	} else if (c == 'short') {					//if 'short' was chosen from line87, produce a short sentence and add to text
 		text += ' ' + short();
-	} else if(c == 'touch') {				//if 'sentence' was chosen from line87, produce a touch sentence and add to text
+	} else if(c == 'touch') {					//if 'sentence' was chosen from line87, produce a touch sentence and add to text
 		text += ' ' + touch();
 	}
 }
 
+//---------------------------------------
+console.log(wrap(text, {'width': width}));		//makes it possible to choose the width of every letter
+ 						
 console.log('\n');
 
-//---------------------------------------
-console.log(wrap(text, {'width': width}));	//makes it possible to choose the width of every letter
+console.log('					'+goodbye());	//the goodbye based on goodbye()
+//console.log(width + goodbye());				//I WANTED TO MAKE IT SO THAT THE GOODBYE WOULD BE OUTLINED ON THE RIGHT SIDE OF THE CALLED WIDTH IN THE COMMAND, BUT I COULDN'T GET IT TO WORK
 
-console.log('\n\n\n'); 						//creates 3 newlines
-
-console.log(goodbye());						//the goodbye based on goodbye()
+console.log('\n\n\n');

@@ -60,7 +60,7 @@ program
 var width = parseInt(program.width);
 var sentence = parseInt(program.sentence);
 
-//---------------------------------------
+//--------------------------------------- CHOICE AND MAYBE - FUNCTIONS
 function choice(array) {
   	var index = chance.natural({'min': 0, 'max': array.length - 1});
   	return array[index];
@@ -74,7 +74,7 @@ function maybe(array) {
   }
 }
 
-//---------------------------------------
+//--------------------------------------- START/ENDING SENTENCES - FUNCTIONS
 function salutation() {
 	return choice(header)+ ' ' + maybe(my) + maybe(adjectives)
 	+ ' ' + choice(first)+ ',';
@@ -84,7 +84,7 @@ function goodbye() {
 	return choice(bye) + ', ' + 'MY ' + choice(first)+ '.';
 }
 
-//---------------------------------------
+//--------------------------------------- SENTENCES - FUNCTIONS
 function short() {
   	return 'I ' + choice(verbsI) + ' ' + 'THE WAY YOU ' + choice(verbsI) 
   	+ ' ' +'ME, YOUR ' + choice(first) + ',' + ' ' + choice(time)+ '.';        ;
@@ -111,7 +111,7 @@ function touch() {
 // in order to use word-wrap, I need to construct a single string (text) containing all generated sentences:
 var text = '';
 
-console.log('\n\n\n'); 						//creates 3 newlines
+console.log('\n\n\n'); 							//creates 3 newlines
 
 console.log(salutation());						//creates solutation based on line78
 
@@ -132,6 +132,12 @@ for (var i = 0; i < sentence; i++) { 			//loop the proces
 		text += ' ' + touch();
 	}
 }
+
+//for (var i = 0; i < sentence; i++) {
+//	var
+//}
+
+
 
 //---------------------------------------
 console.log(wrap(text, {'width': width}));		//makes it possible to choose the width of every letter

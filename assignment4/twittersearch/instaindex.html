@@ -1,6 +1,6 @@
 <html>
 	<head>	
-		<title>SEARCH TWITTER</title>	
+		<title>SEARCH INSTAGRAM</title>	
 		<style>
 			/* CSS Styling */
 			#frame {
@@ -31,7 +31,7 @@
 	</head>
 	<body>		
 		<!-- HTML -->
-		<label>SEARCH TWITTER</label>
+		<label>SEARCH INSTAGRAM</label>
 		<div id="frame">
 			<!-- inputs for the search to send to server -->
 			<div id="inputs">
@@ -54,10 +54,10 @@
 				<script id="results-template" type="text/x-handlebars-template">
 					{{#each this}}
 					<div class="hit">
-						<div class='tweet_text'>{{text}}</div>
+						<div class='posts_text'>{{text}}</div>
 						{{#if images}}
 							{{#each images}}
-								<div class='tweet_image'>
+								<div class='posts_image'>
 									<img src={{this}} />
 								</div>
 							{{/each}}		
@@ -81,10 +81,10 @@
 		  	console.log('connected');
 		  });
 
-		  // when receiving a custom message form the server ('search_twitter_results')
-		  socket.on('search_twitter_results', function(msg) {
+		  // when receiving a custom message form the server ('search_instagram_results')
+		  socket.on('search_instagram_results', function(msg) {
 
-		  	console.log('search_twitter_results: ' + JSON.stringify(msg));
+		  	console.log('search_instagram_results: ' + JSON.stringify(msg));
 
 		  	compile_results_and_dispay(msg);
 		  });
@@ -112,7 +112,7 @@
 		  	var search_params = {keyword_value: keyword, nbr_hits: hits, filter_value: filter}
 
 		  	// send request to the server
-		  	socket.emit('search_twitter', search_params);
+		  	socket.emit('search_instagram', search_params);
 
 		  }
 

@@ -28,8 +28,9 @@ var config = JSON.parse(fs.readFileSync(config_file, "utf8"));
 // create the twitter client
 var client = new twitter(config);
 
-function search_twitter(keyword_value, nbr_hits, filter_value, callback) {
+function search_twitter(keyword_value, nbr_hits, filter_value) {
 
+  
   //https://dev.twitter.com/rest/reference/get/search/tweets
   var twitter_search_params = {q: keyword_value, count: nbr_hits};
 
@@ -42,12 +43,14 @@ function search_twitter(keyword_value, nbr_hits, filter_value, callback) {
 
     var results = [];
 
+    console.log(tweets);
+
     if(!error) {
       //console.log("got " + tweets.statuses.length + " hits")
       for(tweet of tweets.statuses) {
         // console.log(tweet);
 
-        var r = {}; //let r = {};
+        var r = {};
         r.text = tweet.text;
 
         if(tweet.entities.media) {
@@ -57,11 +60,14 @@ function search_twitter(keyword_value, nbr_hits, filter_value, callback) {
           for(media of tweet.entities.media) {
 
             if(media.type == 'photo')         
-              
+
               r.images.push(media.media_url);       
+
           }       
         }
+
         results.push(r);
+
       }
 
     } else {
@@ -69,9 +75,10 @@ function search_twitter(keyword_value, nbr_hits, filter_value, callback) {
     }
 
     // send results to client
-    //io.emit('search_twitter_results', results);   
+    io.emit('search_twitter_results', results);   
 
-    callback(results);    
+    //callback(results);  
+
 
   });
 }
@@ -97,13 +104,7 @@ io.on('connection', function(socket) {
 
   	console.log('searching twitter with: ' + msg.toString());
 
-    search_twitter(msg.keyword_value, msg.nbr_hits, msg.filter_value, function (results) {
-
-      console.log(JSON.stringify(results, null, '\t'));
-
-      io.emit('search_twitter_results', results);
-
-    });  	
+    search_twitter(msg.keyword_value, msg.nbr_hits, msg.filter_value);
 
   });
 

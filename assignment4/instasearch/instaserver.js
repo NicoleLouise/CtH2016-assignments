@@ -12,10 +12,15 @@ var io = require('socket.io')(server);	// npm install --save socket.io
 var fs = require('fs');
 
 //import instagram
-var instagram = require('instagram-node-lib');       // npm install --save instagram-node-lib
+var Instagram = require('instagram-node-lib');       // npm install --save instagram-node-lib
 
 Instagram.set('CLIENT_ID', '271e3f74965842e79ec97c6e41444c9b');
-Instagram.set('CLIENT_SECRET', 'b4f451a183d34714983d7facc9b61425')
+Instagram.set('CLIENT_SECRET', 'b4f451a183d34714983d7facc9b61425');
+Instagram.set('ACCESS_TOKEN', '206161736.271e3f7.97914e6e77c84216bdbeb9c5aef03ea3');
+
+Instagram.set('callback_url', 'http://localhost:8088');
+Instagram.set('redirect_uri', 'http://localhost:8088');
+
 
 /* ----------------------
   Instagram Configuration
@@ -26,7 +31,15 @@ var config_file = "./insta_credentials.json";
 var config = JSON.parse(fs.readFileSync(config_file, "utf8"));
 
 // create the instagram client
-var client = new instagram(config);
+//var client = new instagram(config);
+
+Instagram.tags.info({
+  name: 'blue',
+  complete: function(data){
+    console.log(data);
+  }
+});
+
 
 function search_instagram(keyword_value, nbr_hits, filter_value) {
 

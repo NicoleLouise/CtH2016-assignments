@@ -28,59 +28,57 @@ var config = JSON.parse(fs.readFileSync(config_file, "utf8"));
 // create the twitter client
 var client = new twitter(config);
 
-function search_twitter(keyword_value, nbr_hits, filter_value) {
+/* ----------------------
+  Twitter Functions
+-------------------------*/
 
-  
-  //https://dev.twitter.com/rest/reference/get/search/tweets
-  var twitter_search_params = {q: keyword_value, count: nbr_hits};
+function timeline_user(username, nbr_hits,, keyword) {
 
-  // if there is a filter
-  if(filter_value) {
-    twitter_search_params.filter = filter_value;
-  }
+  var twitter_search_params = {screen_name: username, count: nbr_hits};
 
-  client.get('search/tweets', twitter_search_params, function(error, tweets, response) {
+  client.get('statuses/user_timeline', twitter_search_params, function(error, tweets, response) {
 
     var results = [];
 
-    console.log(tweets);
+    if(error) {
+      console.log(error);
+      return;
+    }
 
-    if(!error) {
-      //console.log("got " + tweets.statuses.length + " hits")
-      for(tweet of tweets.statuses) {
-        // console.log(tweet);
+    for(tweet of tweets) {
 
-        var r = {};
-        r.text = tweet.text;
+      //console.log(tweet);
 
-        if(tweet.entities.media) {
+      var r = {text: tweet.text}; // creating own data structure
 
-          r.images = [];
+      if (tweet.text.search(keyword) > -1) {
+              var r = {text: tweet.text}; // creating own data structure
 
-          for(media of tweet.entities.media) {
-
-            if(media.type == 'photo')         
-
-              r.images.push(media.media_url);       
-
-          }       
-        }
-
-        results.push(r);
 
       }
 
-    } else {
-      console.log('* ERROR *: ' + error);
+      if(tweet.extended_entities && tweet.extended_entities.media) {
+
+        r.images = []; // creating a array of images
+
+        for(media of tweet.extended_entities.media) {
+
+          if(media.type == 'photo')         
+
+            r.images.push(media.media_url);       
+
+        }       
+      }
+
+      results.push(r);
+
     }
 
     // send results to client
-    io.emit('search_twitter_results', results);   
-
-    //callback(results);  
-
+    io.emit('search_twitter_results', results);       
 
   });
+  
 }
 
 /* ----------------------------------
@@ -102,9 +100,10 @@ io.on('connection', function(socket) {
   // (2) configure the connected socket to receive custom messages ('message from human')
   socket.on('search_twitter', function(msg) {
 
-  	console.log('searching twitter with: ' + msg.toString());
+  	console.log('searching twitter with: ' + JSON.stringify(msg));
 
-    search_twitter(msg.keyword_value, msg.nbr_hits, msg.filter_value);
+    //here msg = {username: username, keyword: keyword, nbr_hits: hits}
+    timeline_user(msg.username, msg.nbr_hits, msg.keyword);
 
   });
 
